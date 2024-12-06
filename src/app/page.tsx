@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card } from "../components/ui/card";
 import { Camera, Video, Radio, Menu, Home, Image, Phone, Mail, MapPin } from 'lucide-react';
-import { Panorama } from 'react-panorama';
+import ThreeSixty from 'react-360-view';
 
 const Website = () => {
   const tours = [
@@ -90,12 +90,12 @@ const Website = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 relative">
-              <Panorama 
-                image="/images/360-photo.jpg"
-                width={800}
-                height={800}
-                autoRotate={true}
-                autoRotateSpeed={1}
+              <ThreeSixty
+                amount={36}
+                imagePath="/images/360-photo-{index}.jpg"
+                spinReverse
+                autoplay
+                loop
               />
               <div className="absolute bottom-4 left-[45%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-48">
                 Arraste para visualizar 360°
