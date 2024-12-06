@@ -1,14 +1,15 @@
 'use client'
 import React from 'react';
 import { Card } from "../components/ui/card";
-import { Camera, Video, Radio, Menu, Home, Image, Phone, Mail, MapPin } from 'lucide-react';
-import ThreeSixty from 'react-360-view';
+import { Camera, Video, Radio, Menu, Home, Image, Phone,Film, Eye, Aperture, PanelTop, Gem, Star, Sparkles, Zap, Medal, Globe } from 'lucide-react';
+import { Pannellum } from "pannellum-react";
+import { Mail, MapPin } from 'lucide-react';
 
 const Website = () => {
   const tours = [
-    { url: 'https://guias.cc/pinhapinhao', title: 'Nome do Tour 1', img: '/images/tour1.jpg' },
-    { url: 'https://guias.cc/mobitec-curitiba', title: 'Nome do Tour 2', img: '/images/tour2.jpg' },
-    { url: 'https://guias.cc/ironberg', title: 'Nome do Tour 3', img: '/images/tour3.jpg' }
+    { url: 'https://guias.cc/pinhapinhao', title: 'Pousadas', img: '/images/tour1.jpg' },
+    { url: 'https://guias.cc/mobitec-curitiba', title: 'Empresas', img: '/images/tour2.jpg' },
+    { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
   ];
 
   return (
@@ -17,7 +18,7 @@ const Website = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold">VirtualTours</span>
+              <span className="text-xl font-bold">Wise360</span>
             </div>
             <div className="hidden md:block">
               <div className="flex items-center space-x-4">
@@ -39,84 +40,122 @@ const Website = () => {
         </div>
       </nav>
 
-      <header id="home" className="bg-gradient-to-r from-orange-800 to-orange-300 py-20">
+      <header id="home" className="bg-gradient-to-r from-orange-900 to-orange-500 py-20">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-6xl font-bold mb-4">Tours Virtuais & Serviços de Drone</h1>
-          <p className="text-2xl text-gray-800">Soluções profissionais para sua empresa</p>
+          <h1 className="text-6xl font-bold mb-4">Experiência Imersiva com Tours Virtuais</h1>
+          <p className="text-2xl text-gray-200">Permita que seus clientes acessem locais através de um site ou Google Street View</p>
         </div>
       </header>
-
+      
       <section id="services" className="bg-gray-800 py-16">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-row items-start gap-24">
-            <div className="flex-1">
-              <img 
-                src="/images/drone-photo.jpg"
-                alt="Drone Photography"
-                className="rounded-lg shadow-lg w-[400px] h-[300px] object-cover"
-              />
-            </div>
-            <div className="flex-1 flex flex-col gap-8 justify-center items-center h-full">
-              <div className="w-full">
-                <div className="flex items-center gap-4 mb-4">
-                  <Camera size={32} className="text-blue-400" />
-                  <h2 className="text-3xl font-bold">Captação de Imagens</h2>
-                </div>
-                <p className="text-gray-300 text-xl leading-relaxed">
-                  Oferecemos serviços especializados de fotografia com drone para diversos 
-                  setores, incluindo imobiliárias, eventos, escolas e shows. Nossa equipe 
-                  utiliza equipamentos de última geração para capturar imagens únicas e 
-                  impressionantes da sua propriedade ou evento.
-                </p>
-              </div>
-              <div className="w-full">
-                <div className="flex items-center gap-4 mb-4">
-                  <Camera size={32} className="text-blue-400" />
-                  <h2 className="text-3xl font-bold">Captação de Imagens</h2>
-                </div>
-                <p className="text-gray-300 text-xl leading-relaxed">
-                  Oferecemos serviços especializados de fotografia com drone para diversos 
-                  setores, incluindo imobiliárias, eventos, escolas e shows. Nossa equipe 
-                  utiliza equipamentos de última geração para capturar imagens únicas e 
-                  impressionantes da sua propriedade ou evento.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-900">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 relative">
-            <iframe 
-              src="https://guias.cc/pinhapinhao"
-              width="800" 
-              height="800" 
-              frameBorder="0" 
-              allowFullScreen
-            />
-          </div>
-          <div className="flex-1">
+      <div className="flex flex-row items-start gap-24"> {/* Aumentado gap de 12 para 24 */}
+        {/* Imagem à esquerda */}
+        <div className="flex-1">
+          <img 
+            src="/images/captacao.jpg"
+            alt="Captacao"
+            className="rounded-lg shadow-lg w-[700px] h-[900px] object-cover"
+          />
+        </div>
+        
+        {/* Módulos de texto à direita */}
+        <div className="flex-1 flex flex-col gap-8 justify-center items-center h-full"> {/* Adicionado justify-center e items-center */}
+          <div className="w-full">
             <div className="flex items-center gap-4 mb-4">
-              <Radio size={32} className="text-blue-400" />
-              <h2 className="text-3xl font-bold">Criação do Tour Virtual</h2>
+              <Camera size={32} className="text-blue-400" />
+              <h2 className="text-3xl font-bold">Captação de Imagens</h2>
             </div>
-            <p className="text-gray-300 text-xl leading-relaxed">
-              Transformamos imagens em 360° em experiências imersivas...
+            <p className="text-gray-300 text-lg">
+            "Oferecemos serviços profissionais especializados em fotografia de alta qualidade, 
+            utilizando câmeras de captura 360° para uma experiência imersiva e drones para coberturas aéreas, 
+            ideais para ambientes amplos e projetos que demandam perspectivas únicas e impactantes."
+            </p>
+          </div>
+          <p><br></br></p>
+          <p><br></br></p>
+          <div className="w-full">
+            <div className="flex items-center gap-4 mb-4">
+              <Sparkles size={32} className="text-blue-400" />
+              <h2 className="text-3xl font-bold">Criação de Tour Virtual</h2>
+            </div>            
+            <p className="text-gray-300 text-lg">
+            Transformamos imagens em 360° em experiências imersivas. 
+            Nossa equipe especializada cuida de todo o processo, desde a captação das imagens 
+            até a publicação do tour virtual, garantindo uma navegação suave e intuitiva para seus visitantes.
+            Depois de pronto o tour virtual pode ser disponibilizado através de um site ou no endereço do 
+            comércio ou empresa através do Google Street View.
+            </p>
+          </div>
+          <p><br></br></p>
+          <p><br></br></p>
+          <div className="w-full">
+            <div className="flex items-center gap-4 mb-4">
+              <Globe size={32} className="text-blue-400" />
+              <h2 className="text-3xl font-bold">Navegação Totalmente Interativa</h2>
+            </div>            
+            <p className="text-gray-300 text-lg">
+            O Tour Virtual oferece uma experiência imersiva e totalmente interativa,
+             com recursos como narrações de áudio, vídeos integrados, links interativos 
+             que direcionam para páginas externas ou endereços específicos, 
+             e ícones personalizados para destacar pontos de interesse.
+              Além disso, permite a inclusão de hotspots interativos com informações adicionais,
+               navegação fluida entre diferentes ambientes e suporte para visualização em realidade
+                virtual (VR), proporcionando uma exploração única e envolvente de espaços culturais,
+                 turísticos, comerciais ou educacionais.
             </p>
           </div>
         </div>
       </div>
-    </section>
+      </div>
+      </section>
 
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 relative">
+              <Pannellum
+                width="705px"
+                height="400px"
+                image="/images/360-photo.jpg"
+                pitch={0}
+                yaw={180}
+                hfov={100}
+                autoLoad
+                autoRotate={1}
+                compass={false}
+                showZoomCtrl={false}
+                showFullscreenCtrl={false}
+                minHfov={100}
+                maxHfov={100}
+              />              
+              <div className="absolute bottom-4 left-[47%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-50">
+              Arraste para visualizar 360°
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-4">
+                <Camera size={32} className="text-blue-400" />
+                <h2 className="text-3xl font-bold">Fotos 360°</h2>
+              </div>
+              <p className="text-gray-300 text-lg">
+              Fotos 360° são imagens panorâmicas capturadas em todas as direções ao redor de um ponto central,
+               proporcionando uma visão completa e imersiva do ambiente. 
+               Essas imagens permitem que o espectador explore o cenário em diferentes ângulos, 
+               como se estivesse fisicamente presente no local, ao rotacionar a imagem em dispositivos móveis, 
+               computadores ou através de dispositivos de realidade virtual (VR).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <section className="bg-gray-800 py-16">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-4 mb-8">
-              <Video size={32} className="text-blue-400" />
-              <h2 className="text-3xl font-bold">Gravação e Edição de Vídeos</h2>
+              
+              <h2 className="text-3xl font-bold">Produção de Vídeos para o seu negócio</h2>
             </div>
             <div className="w-full max-w-4xl mb-8">
               <div className="aspect-video">
@@ -129,17 +168,18 @@ const Website = () => {
                 />
               </div>
             </div>
-            <p className="text-gray-300 text-xl leading-relaxed text-center max-w-3xl">
-              Produzimos vídeos profissionais com drones, oferecendo uma perspectiva única 
-              para seu projeto. Nossa equipe cuida de todo o processo de edição, 
-              garantindo um resultado final de alta qualidade.
+            <p className="text-gray-300 text-lg text-center max-w-3xl">
+            Produzimos vídeos profissionais utilizando drones, capturando imagens aéreas 
+            que proporcionam uma perspectiva única e impactante para o seu projeto.
+             Nossa equipe especializada cuida de todo o processo, desde a captura até, edição e entrega,
+              garantindo um resultado final de qualidade com atenção aos mínimos detalhes
             </p>
           </div>
         </div>
       </section>
 
       <section id="tours" className="py-16 container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">Tours Virtuais</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">Exemplos de Tour Virtual</h2>
         <div className="flex flex-wrap justify-center gap-6">
           {tours.map((tour, index) => (
             <Card key={index} className="w-[468px] bg-gray-800 border-gray-700">
@@ -170,7 +210,7 @@ const Website = () => {
               <div>
                 <p className="font-bold">Telefone</p>
                 <a href="tel:+5541999999999" className="text-gray-300 hover:text-white">
-                  (41) 99999-9999
+                  (14) 99909-6128
                 </a>
               </div>
             </div>
@@ -180,7 +220,7 @@ const Website = () => {
               <div>
                 <p className="font-bold">Email</p>
                 <a href="mailto:contato@wise360.com" className="text-gray-300 hover:text-white">
-                  contato@wise360.com
+                  leandro.wisemadness@gmail.com
                 </a>
               </div>
             </div>
@@ -189,16 +229,16 @@ const Website = () => {
               <MapPin size={24} className="text-blue-400" />
               <div>
                 <p className="font-bold">Endereço</p>
-                <p className="text-gray-300">Curitiba, PR</p>
+                <p className="text-gray-300">Bauru, SP</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
       <footer className="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
         <div className="container mx-auto px-6 text-center">
-          <p>© 2024 Tours Virtuais & Serviços de Drone. Todos os direitos reservados.</p>
+          <p>© 2024 Wise360 Tour Virtual. Todos os direitos reservados.</p>
         </div>
       </footer>
     </div>
