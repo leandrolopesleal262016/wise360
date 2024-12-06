@@ -87,35 +87,29 @@ const Website = () => {
       </section>
 
       <section className="py-16 bg-gray-900">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="flex-1 relative">
-              <ThreeSixty
-                amount={36}
-                imagePath="/images/360-photo-{index}.jpg"
-                spinReverse
-                autoplay
-                loop
-              />
-              <div className="absolute bottom-4 left-[45%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-48">
-                Arraste para visualizar 360°
-              </div>
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1 relative">
+            <iframe 
+              src="https://guias.cc/pinhapinhao"
+              width="800" 
+              height="800" 
+              frameBorder="0" 
+              allowFullScreen
+            />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-4 mb-4">
+              <Radio size={32} className="text-blue-400" />
+              <h2 className="text-3xl font-bold">Criação do Tour Virtual</h2>
             </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-4 mb-4">
-                <Radio size={32} className="text-blue-400" />
-                <h2 className="text-3xl font-bold">Criação do Tour Virtual</h2>
-              </div>
-              <p className="text-gray-300 text-xl leading-relaxed">
-                Transformamos imagens em 360° em experiências imersivas. Nossa equipe 
-                especializada cuida de todo o processo, desde a captação das imagens até 
-                a publicação do tour virtual, garantindo uma navegação suave e intuitiva 
-                para seus visitantes.
-              </p>
-            </div>
+            <p className="text-gray-300 text-xl leading-relaxed">
+              Transformamos imagens em 360° em experiências imersivas...
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       <section className="bg-gray-800 py-16">
         <div className="container mx-auto px-6">
