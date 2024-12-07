@@ -1,0 +1,5 @@
+{
+    "build": {
+      "commandWithEnv": "vercel build --legacy-peer-deps"
+    }
+  }
