@@ -1,9 +1,6 @@
 'use client'
-import React from 'react';
-import { Card } from "../components/ui/card";
-import { Camera, Video, Radio, Menu, Home, Image, Phone, Film, Eye, Aperture, PanelTop, Gem, Star, Sparkles, Zap, Medal, Globe } from 'lucide-react';
-import { Mail, MapPin } from 'lucide-react';
-import { Pannellum } from 'pannellum-react';
+import React, { useEffect } from 'react';
+import { Camera, Radio, Menu, Home, Image, Phone, Mail, MapPin, Globe, Sparkles } from 'lucide-react';
 
 const Website = () => {
   const tours = [
@@ -11,6 +8,21 @@ const Website = () => {
     { url: 'https://guias.cc/mobitec-curitiba', title: 'Empresas', img: '/images/tour2.jpg' },
     { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
   ];
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // @ts-ignore
+      window.pannellum.viewer('panorama', {
+        type: 'equirectangular',
+        panorama: '/images/360-photo.jpg',
+        autoLoad: true,
+        autoRotate: 1,
+        compass: false,
+        showZoomCtrl: false,
+        showFullscreenCtrl: false,
+      });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
@@ -110,28 +122,9 @@ const Website = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 relative">
-              <div className="relative">
-                <Pannellum
-                  width="705px"
-                  height="400px"
-                  image="/images/360-photo.jpg"
-                  pitch={0}
-                  yaw={180}
-                  hfov={100}
-                  autoLoad={true}
-                  onLoad={() => {
-                    console.log('panorama loaded');
-                  }}
-                  autoRotate={1}
-                  compass={false}
-                  showZoomCtrl={false}
-                  showFullscreenCtrl={false}
-                  minHfov={100}
-                  maxHfov={100}
-                />
-                <div className="absolute bottom-4 left-[47%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-50">
-                  Arraste para visualizar 360°
-                </div>
+              <div id="panorama" style={{ width: '705px', height: '400px' }}></div>
+              <div className="absolute bottom-4 left-[47%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-50">
+                Arraste para visualizar 360°
               </div>
             </div>
             <div className="flex-1">
@@ -180,12 +173,12 @@ const Website = () => {
         <h2 className="text-3xl font-bold text-center mb-12">Exemplos de Tour Virtual</h2>
         <div className="flex flex-wrap justify-center gap-6">
           {tours.map((tour, index) => (
-            <Card key={index} className="w-[468px] bg-gray-800 border-gray-700">
+            <div key={index} className="w-[468px] bg-gray-800 rounded-lg border border-gray-700">
               <div className="relative cursor-pointer" onClick={() => window.open(tour.url, '_blank')}>
                 <img 
                   src={tour.img}
                   alt={tour.title}
-                  className="w-full h-[312px] object-cover"
+                  className="w-full h-[312px] object-cover rounded-t-lg"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity">
                   <span className="font-semibold">Iniciar Tour Virtual</span>
@@ -194,7 +187,7 @@ const Website = () => {
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-center text-gray-100">{tour.title}</h3>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
