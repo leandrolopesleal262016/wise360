@@ -1,101 +1,254 @@
-import Image from "next/image";
+'use client'
+import React from 'react';
+import { Camera, Radio, Menu, Home, Image, Phone, Mail, MapPin, Globe, Sparkles } from 'lucide-react';
 
-export default function Home() {
+const Website = () => {
+  const tours = [
+    { url: 'https://guias.cc/pinhapinhao', title: 'Pousadas', img: '/images/tour1.jpg' },
+    { url: 'https://guias.cc/mobitec-curitiba', title: 'Empresas', img: '/images/tour2.jpg' },
+    { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
+  ];
+
+  const handle360Load = () => {
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js';
+      script.async = true;
+      script.onload = () => {
+        // @ts-ignore
+        window.pannellum.viewer('panorama', {
+          type: 'equirectangular',
+          panorama: '/images/360-photo.jpg',
+          autoLoad: true,
+          autoRotate: 1,
+          compass: false,
+          showZoomCtrl: false,
+          showFullscreenCtrl: false,
+        });
+      };
+      document.head.appendChild(script);
+
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css';
+      document.head.appendChild(link);
+    }
+  };
+
+  React.useEffect(() => {
+    handle360Load();
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-900 text-gray-100">
+      <nav className="bg-gray-800 sticky top-0 z-50">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <span className="text-xl font-bold">Wise360</span>
+            </div>
+            <div className="hidden md:block">
+              <div className="flex items-center space-x-4">
+                <a href="#home" className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-700">
+                  <Home size={18} /> Início
+                </a>
+                <a href="#tours" className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-700">
+                  <Radio size={18} /> Tours
+                </a>
+                <a href="#services" className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-700">
+                  <Image size={18} /> Serviços
+                </a>
+                <a href="#contact" className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-700">
+                  <Phone size={18} /> Contato
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      <header id="home" className="bg-gradient-to-r from-orange-900 to-orange-500 py-20">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-6xl font-bold mb-4">Experiência Imersiva com Tours Virtuais</h1>
+          <p className="text-2xl text-gray-200">Permita que seus clientes acessem locais através de um site ou Google Street View</p>
+        </div>
+      </header>
+      
+      <section id="services" className="bg-gray-800 py-16">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-row items-start gap-24">
+            <div className="flex-1">
+              <img 
+                src="/images/captacao.jpg"
+                alt="Captacao"
+                className="rounded-lg shadow-lg w-[700px] h-[900px] object-cover"
+              />
+            </div>
+            
+            <div className="flex-1 flex flex-col gap-8 justify-center items-center h-full">
+              <div className="w-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <Camera size={32} className="text-blue-400" />
+                  <h2 className="text-3xl font-bold">Captação de Imagens</h2>
+                </div>
+                <p className="text-gray-300 text-lg">
+                  Oferecemos serviços profissionais especializados em fotografia de alta qualidade, 
+                  utilizando câmeras de captura 360° para uma experiência imersiva e drones para coberturas aéreas, 
+                  ideais para ambientes amplos e projetos que demandam perspectivas únicas e impactantes.
+                </p>
+              </div>
+              
+              <div className="w-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <Sparkles size={32} className="text-blue-400" />
+                  <h2 className="text-3xl font-bold">Criação de Tour Virtual</h2>
+                </div>            
+                <p className="text-gray-300 text-lg">
+                  Transformamos imagens em 360° em experiências imersivas. 
+                  Nossa equipe especializada cuida de todo o processo, desde a captação das imagens 
+                  até a publicação do tour virtual, garantindo uma navegação suave e intuitiva para seus visitantes.
+                  Depois de pronto o tour virtual pode ser disponibilizado através de um site ou no endereço do 
+                  comércio ou empresa através do Google Street View.
+                </p>
+              </div>
+              
+              <div className="w-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <Globe size={32} className="text-blue-400" />
+                  <h2 className="text-3xl font-bold">Navegação Totalmente Interativa</h2>
+                </div>            
+                <p className="text-gray-300 text-lg">
+                  O Tour Virtual oferece uma experiência imersiva e totalmente interativa,
+                  com recursos como narrações de áudio, vídeos integrados, links interativos 
+                  que direcionam para páginas externas ou endereços específicos, 
+                  e ícones personalizados para destacar pontos de interesse.
+                  Além disso, permite a inclusão de hotspots interativos com informações adicionais,
+                  navegação fluida entre diferentes ambientes e suporte para visualização em realidade
+                  virtual (VR), proporcionando uma exploração única e envolvente de espaços culturais,
+                  turísticos, comerciais ou educacionais.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 relative">
+              <div id="panorama" style={{ width: '705px', height: '400px' }}></div>
+              <div className="absolute bottom-4 left-[47%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-50">
+                Arraste para visualizar 360°
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-4">
+                <Camera size={32} className="text-blue-400" />
+                <h2 className="text-3xl font-bold">Fotos 360°</h2>
+              </div>
+              <p className="text-gray-300 text-lg">
+                Fotos 360° são imagens panorâmicas capturadas em todas as direções ao redor de um ponto central,
+                proporcionando uma visão completa e imersiva do ambiente. 
+                Essas imagens permitem que o espectador explore o cenário em diferentes ângulos, 
+                como se estivesse fisicamente presente no local, ao rotacionar a imagem em dispositivos móveis, 
+                computadores ou através de dispositivos de realidade virtual (VR).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section className="bg-gray-800 py-16">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl font-bold mb-8">Produção de Vídeos para o seu negócio</h2>
+            <div className="w-full max-w-4xl mb-8">
+              <div className="aspect-video">
+                <iframe
+                  src="https://www.youtube.com/embed/JYDfBXs7V7Y?autoplay=1&mute=1&loop=1&playlist=JYDfBXs7V7Y"
+                  className="w-full h-full"
+                  title="Video services"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <p className="text-gray-300 text-lg text-center max-w-3xl">
+              Produzimos vídeos profissionais utilizando drones, capturando imagens aéreas 
+              que proporcionam uma perspectiva única e impactante para o seu projeto.
+              Nossa equipe especializada cuida de todo o processo, desde a captura até, edição e entrega,
+              garantindo um resultado final de qualidade com atenção aos mínimos detalhes
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tours" className="py-16 container mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-12">Exemplos de Tour Virtual</h2>
+        <div className="flex flex-wrap justify-center gap-6">
+          {tours.map((tour, index) => (
+            <div key={index} className="w-[468px] bg-gray-800 rounded-lg border border-gray-700">
+              <div className="relative cursor-pointer" onClick={() => window.open(tour.url, '_blank')}>
+                <img 
+                  src={tour.img}
+                  alt={tour.title}
+                  className="w-full h-[312px] object-cover rounded-t-lg"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity">
+                  <span className="font-semibold">Iniciar Tour Virtual</span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-center text-gray-100">{tour.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="bg-gray-800 py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-12">Contato</h2>
+          <div className="flex flex-wrap justify-center gap-12">
+            <div className="flex items-center gap-4">
+              <Phone size={24} className="text-blue-400" />
+              <div>
+                <p className="font-bold">Telefone</p>
+                <a href="tel:+5541999999999" className="text-gray-300 hover:text-white">
+                  (14) 99909-6128
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <Mail size={24} className="text-blue-400" />
+              <div>
+                <p className="font-bold">Email</p>
+                <a href="mailto:contato@wise360.com" className="text-gray-300 hover:text-white">
+                  leandro.wisemadness@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <MapPin size={24} className="text-blue-400" />
+              <div>
+                <p className="font-bold">Endereço</p>
+                <p className="text-gray-300">Bauru, SP</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+        <div className="container mx-auto px-6 text-center">
+          <p>© 2024 Wise360 Tour Virtual. Todos os direitos reservados.</p>
+        </div>
       </footer>
     </div>
   );
-}
+};
+
+export default Website;
