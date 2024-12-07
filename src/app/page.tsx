@@ -1,47 +1,12 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Card } from "../components/ui/card";
 import { Camera, Video, Radio, Menu, Home, Image, Phone, Film, Eye, Aperture, PanelTop, Gem, Star, Sparkles, Zap, Medal, Globe } from 'lucide-react';
 import { Mail, MapPin } from 'lucide-react';
-
-const Panorama = () => {
-  const viewerRef = useRef(null);
-
-  useEffect(() => {
-    const loadPannellum = async () => {
-      const pannellum = await import('pannellum-react/es/elements/Pannellum');
-      if (viewerRef.current) {
-        pannellum.viewer(viewerRef.current, {
-          type: 'equirectangular',
-          panorama: '/images/360-photo.jpg',
-          autoLoad: true,
-          autoRotate: 1,
-          compass: false,
-          showZoomCtrl: false,
-          showFullscreenCtrl: false,
-          minHfov: 100,
-          maxHfov: 100
-        });
-      }
-    };
-    loadPannellum();
-  }, []);
-
-  return (
-    <div className="relative">
-      <div ref={viewerRef} style={{ width: '705px', height: '400px' }} />
-      <div className="absolute bottom-4 left-[47%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-50">
-        Arraste para visualizar 360°
-      </div>
-    </div>
-  );
-};
+import { Pannellum } from 'pannellum-react';
 
 const Website = () => {
   const tours = [
-    { url: 'https://guias.cc/pinhapinhao', title: 'Pousadas', img: '/images/tour1.jpg' },
-    { url: 'https://guias.cc/mobitec-curitiba', title: 'Empresas', img: '/images/tour2.jpg' },
-    { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
     { url: 'https://guias.cc/pinhapinhao', title: 'Pousadas', img: '/images/tour1.jpg' },
     { url: 'https://guias.cc/mobitec-curitiba', title: 'Empresas', img: '/images/tour2.jpg' },
     { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
@@ -53,7 +18,6 @@ const Website = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold">Wise360</span>
               <span className="text-xl font-bold">Wise360</span>
             </div>
             <div className="hidden md:block">
@@ -77,15 +41,11 @@ const Website = () => {
       </nav>
 
       <header id="home" className="bg-gradient-to-r from-orange-900 to-orange-500 py-20">
-      <header id="home" className="bg-gradient-to-r from-orange-900 to-orange-500 py-20">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-6xl font-bold mb-4">Experiência Imersiva com Tours Virtuais</h1>
-          <p className="text-2xl text-gray-200">Permita que seus clientes acessem locais através de um site ou Google Street View</p>
           <h1 className="text-6xl font-bold mb-4">Experiência Imersiva com Tours Virtuais</h1>
           <p className="text-2xl text-gray-200">Permita que seus clientes acessem locais através de um site ou Google Street View</p>
         </div>
       </header>
-      
       
       <section id="services" className="bg-gray-800 py-16">
         <div className="container mx-auto px-6">
@@ -105,13 +65,12 @@ const Website = () => {
                   <h2 className="text-3xl font-bold">Captação de Imagens</h2>
                 </div>
                 <p className="text-gray-300 text-lg">
-                  "Oferecemos serviços profissionais especializados em fotografia de alta qualidade, 
+                  Oferecemos serviços profissionais especializados em fotografia de alta qualidade, 
                   utilizando câmeras de captura 360° para uma experiência imersiva e drones para coberturas aéreas, 
-                  ideais para ambientes amplos e projetos que demandam perspectivas únicas e impactantes."
+                  ideais para ambientes amplos e projetos que demandam perspectivas únicas e impactantes.
                 </p>
               </div>
-              <p><br></br></p>
-              <p><br></br></p>
+              
               <div className="w-full">
                 <div className="flex items-center gap-4 mb-4">
                   <Sparkles size={32} className="text-blue-400" />
@@ -125,8 +84,7 @@ const Website = () => {
                   comércio ou empresa através do Google Street View.
                 </p>
               </div>
-              <p><br></br></p>
-              <p><br></br></p>
+              
               <div className="w-full">
                 <div className="flex items-center gap-4 mb-4">
                   <Globe size={32} className="text-blue-400" />
@@ -152,7 +110,29 @@ const Website = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 relative">
-              <Panorama />
+              <div className="relative">
+                <Pannellum
+                  width="705px"
+                  height="400px"
+                  image="/images/360-photo.jpg"
+                  pitch={0}
+                  yaw={180}
+                  hfov={100}
+                  autoLoad={true}
+                  onLoad={() => {
+                    console.log('panorama loaded');
+                  }}
+                  autoRotate={1}
+                  compass={false}
+                  showZoomCtrl={false}
+                  showFullscreenCtrl={false}
+                  minHfov={100}
+                  maxHfov={100}
+                />
+                <div className="absolute bottom-4 left-[47%] transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white pointer-events-none text-center w-50">
+                  Arraste para visualizar 360°
+                </div>
+              </div>
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-4 mb-4">
@@ -174,9 +154,7 @@ const Website = () => {
       <section className="bg-gray-800 py-16">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center">
-            <div className="flex items-center gap-4 mb-8">
-              <h2 className="text-3xl font-bold">Produção de Vídeos para o seu negócio</h2>
-            </div>
+            <h2 className="text-3xl font-bold mb-8">Produção de Vídeos para o seu negócio</h2>
             <div className="w-full max-w-4xl mb-8">
               <div className="aspect-video">
                 <iframe
@@ -199,7 +177,6 @@ const Website = () => {
       </section>
 
       <section id="tours" className="py-16 container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">Exemplos de Tour Virtual</h2>
         <h2 className="text-3xl font-bold text-center mb-12">Exemplos de Tour Virtual</h2>
         <div className="flex flex-wrap justify-center gap-6">
           {tours.map((tour, index) => (
@@ -232,7 +209,6 @@ const Website = () => {
                 <p className="font-bold">Telefone</p>
                 <a href="tel:+5541999999999" className="text-gray-300 hover:text-white">
                   (14) 99909-6128
-                  (14) 99909-6128
                 </a>
               </div>
             </div>
@@ -243,7 +219,6 @@ const Website = () => {
                 <p className="font-bold">Email</p>
                 <a href="mailto:contato@wise360.com" className="text-gray-300 hover:text-white">
                   leandro.wisemadness@gmail.com
-                  leandro.wisemadness@gmail.com
                 </a>
               </div>
             </div>
@@ -253,16 +228,14 @@ const Website = () => {
               <div>
                 <p className="font-bold">Endereço</p>
                 <p className="text-gray-300">Bauru, SP</p>
-                <p className="text-gray-300">Bauru, SP</p>
               </div>
             </div>
           </div>
         </div>
-        </section>
+      </section>
 
       <footer className="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
         <div className="container mx-auto px-6 text-center">
-          <p>© 2024 Wise360 Tour Virtual. Todos os direitos reservados.</p>
           <p>© 2024 Wise360 Tour Virtual. Todos os direitos reservados.</p>
         </div>
       </footer>
