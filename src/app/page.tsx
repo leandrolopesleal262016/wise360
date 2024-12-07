@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Camera, Radio, Menu, Home, Image, Phone, Mail, MapPin, Globe, Sparkles } from 'lucide-react';
 
 const Website = () => {
@@ -9,34 +9,19 @@ const Website = () => {
     { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
   ];
 
-  const handle360Load = () => {
+  useEffect(() => {
     if (typeof window !== 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js';
-      script.async = true;
-      script.onload = () => {
-        // @ts-ignore
-        window.pannellum.viewer('panorama', {
-          type: 'equirectangular',
-          panorama: '/images/360-photo.jpg',
-          autoLoad: true,
-          autoRotate: 1,
-          compass: false,
-          showZoomCtrl: false,
-          showFullscreenCtrl: false,
-        });
-      };
-      document.head.appendChild(script);
-
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css';
-      document.head.appendChild(link);
+      // @ts-ignore
+      window.pannellum.viewer('panorama', {
+        type: 'equirectangular',
+        panorama: '/images/360-photo.jpg',
+        autoLoad: true,
+        autoRotate: 1,
+        compass: false,
+        showZoomCtrl: false,
+        showFullscreenCtrl: false,
+      });
     }
-  };
-
-  React.useEffect(() => {
-    handle360Load();
   }, []);
 
   return (
