@@ -42,6 +42,9 @@ const Website = () => {
     { url: 'https://guias.cc/pinhapinhao', title: 'Pousadas', img: '/images/tour1.jpg' },
     { url: 'https://guias.cc/mobitec-curitiba', title: 'Empresas', img: '/images/tour2.jpg' },
     { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
+    { url: 'https://guias.cc/pinhapinhao', title: 'Pousadas', img: '/images/tour1.jpg' },
+    { url: 'https://guias.cc/mobitec-curitiba', title: 'Empresas', img: '/images/tour2.jpg' },
+    { url: 'https://guias.cc/ironberg', title: 'Academias', img: '/images/tour3.jpg' }
   ];
 
   return (
@@ -50,6 +53,7 @@ const Website = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
+              <span className="text-xl font-bold">Wise360</span>
               <span className="text-xl font-bold">Wise360</span>
             </div>
             <div className="hidden md:block">
@@ -73,11 +77,15 @@ const Website = () => {
       </nav>
 
       <header id="home" className="bg-gradient-to-r from-orange-900 to-orange-500 py-20">
+      <header id="home" className="bg-gradient-to-r from-orange-900 to-orange-500 py-20">
         <div className="container mx-auto px-6 text-center">
+          <h1 className="text-6xl font-bold mb-4">Experiência Imersiva com Tours Virtuais</h1>
+          <p className="text-2xl text-gray-200">Permita que seus clientes acessem locais através de um site ou Google Street View</p>
           <h1 className="text-6xl font-bold mb-4">Experiência Imersiva com Tours Virtuais</h1>
           <p className="text-2xl text-gray-200">Permita que seus clientes acessem locais através de um site ou Google Street View</p>
         </div>
       </header>
+      
       
       <section id="services" className="bg-gray-800 py-16">
         <div className="container mx-auto px-6">
@@ -192,6 +200,7 @@ const Website = () => {
 
       <section id="tours" className="py-16 container mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-12">Exemplos de Tour Virtual</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">Exemplos de Tour Virtual</h2>
         <div className="flex flex-wrap justify-center gap-6">
           {tours.map((tour, index) => (
             <Card key={index} className="w-[468px] bg-gray-800 border-gray-700">
@@ -223,6 +232,7 @@ const Website = () => {
                 <p className="font-bold">Telefone</p>
                 <a href="tel:+5541999999999" className="text-gray-300 hover:text-white">
                   (14) 99909-6128
+                  (14) 99909-6128
                 </a>
               </div>
             </div>
@@ -233,6 +243,7 @@ const Website = () => {
                 <p className="font-bold">Email</p>
                 <a href="mailto:contato@wise360.com" className="text-gray-300 hover:text-white">
                   leandro.wisemadness@gmail.com
+                  leandro.wisemadness@gmail.com
                 </a>
               </div>
             </div>
@@ -242,14 +253,16 @@ const Website = () => {
               <div>
                 <p className="font-bold">Endereço</p>
                 <p className="text-gray-300">Bauru, SP</p>
+                <p className="text-gray-300">Bauru, SP</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
       <footer className="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
         <div className="container mx-auto px-6 text-center">
+          <p>© 2024 Wise360 Tour Virtual. Todos os direitos reservados.</p>
           <p>© 2024 Wise360 Tour Virtual. Todos os direitos reservados.</p>
         </div>
       </footer>
